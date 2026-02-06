@@ -1,0 +1,12 @@
+groups:
+- name: backend-uptime
+  rules:
+  - alert: Backend OFF
+    expr: up{job="saffira_backend"} == 0
+    for: 10s
+    labels:
+      severity: critical
+      service: backend
+    annotations:
+      summary: "Saffira Backend está fora do ar"
+      description: "O backend não responde ao Prometheus há 10 segundos"
