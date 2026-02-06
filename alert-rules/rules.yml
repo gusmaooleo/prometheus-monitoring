@@ -1,7 +1,7 @@
 groups:
 - name: backend-uptime
   rules:
-  - alert: Backend OFF
+  - alert: BackendDown
     expr: up{job="saffira_backend"} == 0
     for: 10s
     labels:

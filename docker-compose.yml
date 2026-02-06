@@ -14,6 +14,8 @@ services:
       - '--web.enable-lifecycle'
     networks:
       - monitoring
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 
   alertmanager:
@@ -28,6 +30,8 @@ services:
       - "9093:9093"
     networks:
       - monitoring
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   monitoring:
