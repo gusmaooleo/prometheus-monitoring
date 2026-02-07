@@ -1,12 +1,20 @@
 groups:
-- name: backend-uptime
+- name: saffira-alerts
   rules:
-  - alert: BackendDown
+  - alert: backend-off
     expr: up{job="saffira_backend"} == 0
-    for: 10s
+    for: 5s
     labels:
       severity: critical
       service: backend
     annotations:
       summary: "Saffira Backend está fora do ar"
-      description: "O backend não responde ao Prometheus há 10 segundos"
+      description: "O backend não responde ao Prometheus há 5 segundos"
+  - alert: external_api_down
+    expr: rate(external_api_down{api="saffira_yolov4"}[30s]) == 1
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "Falha na integração com API externa"
+      description: "Erros detectados ao chamar api_externa"

@@ -1,20 +1,16 @@
 import express from "express";
+import { configDotenv } from "dotenv";
+import { handleCase } from "./handle-cases/handle-cases.js";
 
+configDotenv();
 const app = express();
 app.use(express.json());
 
 app.post("/alert", (req, res) => {
-  console.log("ALERTA RECEBIDO:");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  res.sendStatus(200);
-});
-
-app.get("/alert", (req, res) => {
-  console.log("DISCOVERABLE");
+  handleCase(req.body);
   res.sendStatus(200);
 });
 
 app.listen(6000, "0.0.0.0", () => {
-  console.log("Webhook rodando na porta 6000");
+  console.log("Hook running on :6000");
 });

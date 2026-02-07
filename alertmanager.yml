@@ -3,7 +3,7 @@ global:
 
 route:
   group_by: ['alertname']
-  group_wait: 10s
+  group_wait: 0s
   group_interval: 10s
   repeat_interval: 1h
   receiver: 'default-receiver'
@@ -12,3 +12,4 @@ receivers:
   - name: 'default-receiver'
     webhook_configs:
       - url: 'http://host.docker.internal:6000/alert'
+        send_resolved: true
