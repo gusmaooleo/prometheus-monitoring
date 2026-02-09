@@ -5,7 +5,7 @@ import { backendCameraOffine } from "./camera-off.js";
 const knwonCases = {
   backend_down: (data) => backendDown(data),
   external_api_down: (data) => externalApiDown(data),
-  camera_off: (data) => backendCameraOffine(data)
+  camera_offline: (data) => backendCameraOffine(data)
 };
 
 export function handleCase(data) {

@@ -25,7 +25,7 @@ groups:
     expr: camera_offline{job="saffira_backend"} == 1
     for: 30s
     labels:
-      severity: critical
+      severity: warning
       service: cameras
     annotations:
       summary: "Câmera offline: {{ $labels.cameraName }}"
