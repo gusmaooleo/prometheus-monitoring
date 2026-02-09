@@ -2,13 +2,13 @@ import sendTelegramMessage from "../api-connections/telegram.js";
 
 export function backendDown(data) {
   const message = `
-    Backend down: [${new Date().toLocaleDateString()}]
-    IP_address: ${data.commonLabels.instance} 
-    status: ${data.status}
-    criticality: ${data.commonLabels.severity} 
-    down: ${data.alerts[0].startsAt}
-    up: ${data.status === "firing" ? "-" : data.alerts[0].startsAt}
-  `;
+Backend down: [${new Date().toLocaleDateString()}]
+client: ${process.env.CLIENT_NAME}
+client_ip:${data.commonLabels.instance} 
+status: ${data.status}
+criticality: ${data.commonLabels.severity} 
+down: ${data.alerts[0].startsAt}
+up: ${data.status === "firing" ? "-" : data.alerts[0].startsAt}`;
   console.log(message);
   sendTelegramMessage(message);
 }

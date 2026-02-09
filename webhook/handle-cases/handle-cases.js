@@ -1,9 +1,11 @@
 import { backendDown } from "./backend-down.js";
 import { externalApiDown } from "./api-down.js";
+import { backendCameraOffine } from "./camera-off.js";
 
 const knwonCases = {
-  "backend-off": (data) => backendDown(data),
+  backend_down: (data) => backendDown(data),
   external_api_down: (data) => externalApiDown(data),
+  camera_off: (data) => backendCameraOffine(data)
 };
 
 export function handleCase(data) {
